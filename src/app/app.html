@@ -3,27 +3,27 @@
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
-          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light dark:bg-gray-800 dark:border-white/[0.315] dark:shadow-[2px_2px_0px_rgba(255,255,255,0.26)] dark:text-white">
+          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light">
             {{item.content}}
           </div>
         }
         @case ("ASSISTANT") {
-          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light dark:text-white/[0.63]"></markdown>
+          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
         }
         @case ("SYSTEM") {
-          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light dark:bg-red-500/[0.2] dark:border-red-500/[0.8] dark:shadow-[3px_3px_0px_rgba(239,68,68,0.65)] dark:text-red-500">
+          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
         @default {
-          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light dark:bg-red-500/[0.2] dark:border-red-500/[0.8] dark:shadow-[3px_3px_0px_rgba(239,68,68,0.65)] dark:text-red-500">
+          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
       }
     }
 
-    <div class="p-3 opacity-0 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light dark:bg-red-500/[0.2] dark:border-red-500/[0.8] dark:shadow-[3px_3px_0px_rgba(239,68,68,0.65)] dark:text-red-500">
+    <div class="p-3 opacity-0 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
       <div class="h-10"></div>
     </div>
   </div>
@@ -32,20 +32,20 @@
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
-          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light dark:bg-gray-800 dark:border-white/[0.315] dark:shadow-[2px_2px_0px_rgba(255,255,255,0.26)] dark:text-white">
+          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light">
             {{item.content}}
           </div>
         }
         @case ("ASSISTANT") {
-          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light dark:text-white/[0.63]"></markdown>
+          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
         }
         @case ("SYSTEM") {
-          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light dark:bg-red-500/[0.2] dark:border-red-500/[0.8] dark:shadow-[3px_3px_0px_rgba(239,68,68,0.65)] dark:text-red-500">
+          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
         @default {
-          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light dark:bg-red-500/[0.2] dark:border-red-500/[0.8] dark:shadow-[3px_3px_0px_rgba(239,68,68,0.65)] dark:text-red-500">
+          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
@@ -60,7 +60,7 @@
   <input type="text" 
   [ngModel]="text()"
   (ngModelChange)="onUserNameChange($event)" 
-  class="bg-white px-4 text-sm rounded-sm text-gray-400 shadow-[3px_3px_0px_#99a1af] font-light border border-gray-200 h-12 w-full focus:outline-none focus:border-gray-300 focus:text-gray-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:focus:border-white/[0.53] dark:focus:text-white" placeholder="Ask anything">
+  class="bg-white px-4 text-sm rounded-sm text-gray-400 shadow-[3px_3px_0px_#99a1af] font-light border border-gray-200 h-12 w-full focus:outline-none focus:border-gray-300 focus:text-gray-500" placeholder="Ask anything">
   <span class="absolute right-8 bottom-3.5 flex size-3">
     <span 
     class="relative inline-flex size-2.5 rounded-sm flicker bg-black/[0.2]"
@@ -74,12 +74,12 @@
   </span>
 </div>
 
-<div class="flex flex-col gap-2 fixed top-5 left-5">
+<div class="flex flex-col gap-2 fixed top-5 left-5 z-10">
   <div class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer">
     <img src="ghost.svg" class="h-6">
   </div>
   @if(Conversation().length > 1){
-    <div (click)="newConversation()" class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer hover:shadow-[2px_2px_0px_#99a1af] transition-all opacity-60 hover:opacity-100">
+    <div (click)="newConversation()" class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer hover:shadow-[2px_2px_0px_#99a1af] transition-all">
       <img src="new.svg" class="h-6">
     </div>
   }
