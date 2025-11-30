@@ -1,22 +1,25 @@
+<img src="https://i.pinimg.com/1200x/2a/28/7d/2a287d10b2d4c449d1b731b5189e57e5.jpg" class="h-60 w-full object-cover">
+
+<!-- https://i.pinimg.com/1200x/2a/28/7d/2a287d10b2d4c449d1b731b5189e57e5.jpg/ -->
 @if (Conversation().length > 1) {
-  <div class="flex flex-col gap-5 w-10/12 md:w-1/2 mx-auto py-10 h-full max-w-3xl">
+  <div class="flex flex-col gap-5 w-10/12 md:w-11/12 mx-auto py-10 h-full max-w-3xl">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
-          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light">
+          <div class="rounded-sm p-2.5 px-3.5 bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56),inset_-3px_-3px_0px_#ffffffd0] text-black text-sm font-light">
             {{item.content}}
           </div>
         }
         @case ("ASSISTANT") {
-          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
+          <markdown [data]="item.content" class="p-2.5 px-3.5 rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
         }
         @case ("SYSTEM") {
-          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
+          <div class="p-2.5 px-3.5 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65),inset_-3px_-3px_0px_#ffffff90] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
         @default {
-          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
+          <div class="p-2.5 px-3.5 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
@@ -28,24 +31,42 @@
     </div>
   </div>
 }@else {
-  <div class="flex flex-col justify-center gap-5 w-10/12 md:w-1/2 mx-auto py-10 h-full max-w-3xl">
+  <div class="flex flex-col justify-center gap-5 w-10/12 mx-auto py-10 h-full md:max-w-5xl">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
-          <div class="self-end rounded-sm p-3 px-4 max-w-[80%] bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56)] text-black text-sm font-light">
+          <div class="w-full rounded-sm p-2.5 px-3.5 bg-white border border-black/[0.8] shadow-[2px_2px_0px_rgba(0,0,0,0.56), inset_-3px_-3px_0px_#ffffff90] text-black text-sm font-light">
             {{item.content}}
           </div>
         }
         @case ("ASSISTANT") {
-          <markdown [data]="item.content" class="self-start p-3 px-4 max-w-[80%] rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
+          <markdown [data]="item.content" class="p-2.5 px-3.5 rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
         }
         @case ("SYSTEM") {
-          <div class="p-3 px-4 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
+          <div class="p-2.5 px-3.5 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65),inset_-3px_-3px_0px_#ffffff90] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
+
+          
+
+          <div class="border rounded-sm shadow-[3px_3px_0px_#155dfc60,inset_-3px_-3px_0px_#ffffff90] border-blue-400/[0.8]">
+            <details>
+              <summary class="p-2.5 px-3.5 bg-blue-600/[0.1] text-blue-700/[0.63] shadow-[inset_-3px_-3px_0px_#ffffff90] text-sm font-light rounded-t-sm">
+                Browser
+              </summary>
+              <div class="p-2.5 px-3.5 font-light text-xs border-t border-blue-400/[0.8] rounded-b-sm ">
+                <p>Here are the frequently asked questions and answers.</p>
+              </div>
+            </details>
+          </div>
+        
+
+      
+          
+
         }
         @default {
-          <div class="p-3 px-4 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
+          <div class="p-2.5 px-3.5 rounded-xl bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65)] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
         }
@@ -74,7 +95,7 @@
   </span>
 </div>
 
-<div class="flex flex-col gap-2 fixed top-5 left-5 z-10">
+<!-- <div class="flex flex-col gap-2 fixed top-5 left-5 z-10">
   <div class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer">
     <img src="ghost.svg" class="h-6">
   </div>
@@ -84,4 +105,4 @@
     </div>
   }
   
-</div>
+</div> -->
