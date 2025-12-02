@@ -1,8 +1,41 @@
-<img src="https://i.pinimg.com/1200x/2a/28/7d/2a287d10b2d4c449d1b731b5189e57e5.jpg" class="h-60 w-full object-cover">
+<!-- -------------------------------------------------------------------- -->
+<!-- ------------------------ CONTROL BOARD ----------------------------- -->
+<!-- -------------------------------------------------------------------- -->
 
-<!-- https://i.pinimg.com/1200x/2a/28/7d/2a287d10b2d4c449d1b731b5189e57e5.jpg/ -->
+<div class="w-full flex justify-center py-5 ">
+  <div class="relative w-10/12 max-w-5xl rounded-sm">
+    <div class="absolute w-full p-2 flex flex-row justify-between gap-2 z-10">
+      <a href="https://github.com/Se00n00/Heirarchial-Deep-researcher-Agent" target="_blank"  class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] p-1  rounded-sm cursor-pointer">
+        <img src="Icons/github.svg" class="h-6">
+      </a>
+
+      @if(Conversation().length > 1){  
+        <div class="flex gap-2">
+          <div class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] p-1  rounded-sm cursor-pointer">
+            <img src="Icons/new.svg" class="h-6">
+          </div>
+          <div  class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] p-1  rounded-sm cursor-pointer">
+            <img src="Icons/warning.svg" class="h-6">
+          </div>
+          <div  class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] p-1  rounded-sm cursor-pointer">
+            <img src="Icons/skip.svg" class="h-6">
+          </div>
+        </div>
+      }
+
+    </div>
+    <img src="https://i.pinimg.com/1200x/2a/28/7d/2a287d10b2d4c449d1b731b5189e57e5.jpg" class="shadow-[3px_3px_0px_#00000060,inset_-4px_-4px_0px_#ffffffd0] h-60 -z-10 w-full object-cover rounded-sm">
+  </div>
+  
+</div>
+
+
+<!-- -------------------------------------------------------------------- -->
+<!-- ------------------------- CONVERSATION ----------------------------- -->
+<!-- -------------------------------------------------------------------- -->
+
 @if (Conversation().length > 1) {
-  <div class="flex flex-col gap-5 w-10/12 md:w-11/12 mx-auto py-10 h-full max-w-3xl">
+  <div class="flex flex-col gap-5 w-10/12 md:w-10/12 mx-auto h-full min-h-screen max-w-4xl">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
@@ -31,7 +64,7 @@
     </div>
   </div>
 }@else {
-  <div class="flex flex-col justify-center gap-5 w-10/12 mx-auto py-10 h-full md:max-w-5xl">
+  <div class="flex flex-col items-center gap-5 min-h-screen">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
@@ -43,13 +76,13 @@
           <markdown [data]="item.content" class="p-2.5 px-3.5 rounded-sm bg-blue-600/[0.1] border border-blue-400/[0.8] shadow-[3px_3px_0px_#155dfc60] text-blue-700/[0.63] text-sm font-light"></markdown>
         }
         @case ("SYSTEM") {
-          <div class="p-2.5 px-3.5 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65),inset_-3px_-3px_0px_#ffffff90] text-red-500 text-sm font-light">
+          <div class="w-10/12 max-w-4xl p-2.5 px-3.5 rounded-sm bg-red-500/[0.1] border border-red-500/[0.8] shadow-[3px_3px_0px_rgba(239,68,68,0.65),inset_-3px_-3px_0px_#ffffff90] text-red-500 text-sm font-light">
             {{item.content}}
           </div>
 
           
 
-          <div class="border rounded-sm shadow-[3px_3px_0px_#155dfc60,inset_-3px_-3px_0px_#ffffff90] border-blue-400/[0.8]">
+          <div class="w-10/12 max-w-4xl border rounded-sm shadow-[3px_3px_0px_#155dfc60,inset_-3px_-3px_0px_#ffffff90] border-blue-400/[0.8]">
             <details>
               <summary class="p-2.5 px-3.5 bg-blue-600/[0.1] text-blue-700/[0.63] shadow-[inset_-3px_-3px_0px_#ffffff90] text-sm font-light rounded-t-sm">
                 Browser
@@ -72,37 +105,33 @@
         }
       }
     }
-    <img src="ascii.png" alt="" class="select-none" draggable="false">
   </div>
 }
 
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------- INPUT BOARD ----------------------------- -->
+<!-- -------------------------------------------------------------------- -->
 
-<div class="fixed bottom-10 w-9/12 md:w-3/5 left-1/2 transform -translate-x-1/2 px-5">
-  <input type="text" 
-  [ngModel]="text()"
-  (ngModelChange)="onUserNameChange($event)" 
-  class="bg-white px-4 text-sm rounded-sm text-gray-400 shadow-[3px_3px_0px_#99a1af] font-light border border-gray-200 h-12 w-full focus:outline-none focus:border-gray-300 focus:text-gray-500" placeholder="Ask anything">
-  <span class="absolute right-8 bottom-3.5 flex size-3">
-    <span 
-    class="relative inline-flex size-2.5 rounded-sm flicker bg-black/[0.2]"
-    [ngClass]="{
-      'bg-transparent':isTouched() === false,
-      'bg-black/[0.1]': timeLeftToSend() > 2,
-      'bg-black/[0.7]': timeLeftToSend() === 2,
-      'bg-black flicker_faster': timeLeftToSend() === 1,
-      'bg-blue-600 flicker_faster': timeLeftToSend() === 0
-    }"></span>
-  </span>
+
+<div class="sticky bottom-10 w-full flex justify-center">
+  <div class="w-10/12 max-w-4xl flex justify-center relative">
+    <input type="text" 
+    [ngModel]="text()"
+    (ngModelChange)="onUserNameChange($event)" 
+    class="bg-gray-500/[0.1] backdrop-blur-lg px-4 w-full text-sm rounded-sm text-gray-400 shadow-[3px_3px_0px_#99a1af,inset_-3px_-3px_0px_#ffffff90] font-light border border-gray-500/[0.8] h-12 focus:outline-none focus:border-gray-500 focus:text-gray-500" placeholder="Ask anything">
+    <span class="absolute right-8 bottom-3.5 flex size-3">
+      <span 
+      class="relative inline-flex size-2.5 rounded-sm flicker bg-black/[0.2]"
+      [ngClass]="{
+        'bg-transparent':isTouched() === false,
+        'bg-black/[0.1]': timeLeftToSend() > 2,
+        'bg-black/[0.7]': timeLeftToSend() === 2,
+        'bg-black flicker_faster': timeLeftToSend() === 1,
+        'bg-blue-600 flicker_faster': timeLeftToSend() === 0
+      }"></span>
+    </span>  
+  </div>
+  
 </div>
 
-<!-- <div class="flex flex-col gap-2 fixed top-5 left-5 z-10">
-  <div class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer">
-    <img src="ghost.svg" class="h-6">
-  </div>
-  @if(Conversation().length > 1){
-    <div (click)="newConversation()" class="border p-2 shadow-[3px_3px_0px_#99a1af] rounded-sm cursor-pointer hover:shadow-[2px_2px_0px_#99a1af] transition-all">
-      <img src="new.svg" class="h-6">
-    </div>
-  }
-  
-</div> -->
+
