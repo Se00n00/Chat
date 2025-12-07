@@ -2,7 +2,7 @@
 <!-- ------------------------ CONTROL BOARD ----------------------------- -->
 <!-- -------------------------------------------------------------------- -->
 
-<div class="w-full flex justify-center py-5">
+<div class="w-full flex justify-center py-5 transition-colors duration-300">
   <div class="relative w-11/12 max-w-6xl rounded-xl">
     <div class="absolute w-full h-full p-6 flex flex-row justify-between items-end gap-2 z-10">
       <div class="flex flex-col h-full justify-between">
@@ -31,14 +31,32 @@
           <div class="font-roboto font-light text-sm">Hydra can answers blah blah</div>
         </div>
       </div>
-      
-      <a href="https://github.com/Se00n00/Heirarchial-Deep-researcher-Agent" target="_blank"  class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] hover:bg-white/[0.2] transition-all p-1  rounded-sm cursor-pointer">
-        <img src="Icons/github.svg" class="h-6">
-      </a>
 
-      
+      <div class="flex gap-2 items-center">
+        <!-- THEME TOGGLE BUTTON - NEW -->
+        <button (click)="toggleTheme()" class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] hover:bg-white/[0.2] transition-all p-1.5 rounded-sm cursor-pointer" title="Toggle Theme">
+          @if (isDarkMode()) {
+            <!-- Sun Icon for Light Mode -->
+            <svg class="h-5 w-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          } @else {
+            <!-- Moon Icon for Dark Mode -->
+            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          }
+        </button>
 
-      <!-- @if(Conversation().length > 1){  
+        <!-- GITHUB LINK (EXISTING) -->
+        <a href="https://github.com/Se00n00/Heirarchial-Deep-researcher-Agent" target="_blank" class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] hover:bg-white/[0.2] transition-all p-1 rounded-sm cursor-pointer">
+          <img src="Icons/github.svg" class="h-6">
+        </a>
+      </div>
+
+
+
+      <!-- @if(Conversation().length > 1){
         <div class="flex gap-2">
           <div class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] p-1  rounded-sm cursor-pointer">
             <img src="Icons/new.svg" class="h-6">
@@ -55,7 +73,7 @@
     </div>
     <img src="image(4).png" class="shadow-[3px_3px_0px_#00000060,inset_-4px_-4px_0px_#ffffffd0] h-40 -z-10 w-full object-cover rounded-lg border border-black/[0.7]">
   </div>
-  
+
 </div>
 
 <router-outlet/>
