@@ -64,7 +64,7 @@ export class Chat {
       ...prev,
       {type:"USER", heading:null, content:prompt}
     ]);
-    
+
     let res = await fetch(import.meta.env.NG_APP_BACKEND, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

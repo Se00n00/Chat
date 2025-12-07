@@ -9,8 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+  <!-- Dark Mode Initialization Script -->
+  <script>
+    // Apply dark class before page renders to prevent flash
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
-<body class="flex font-roboto">
-  <app-root class="flex-1 "></app-root>
+<body class="flex font-roboto bg-white dark:bg-gray-900 transition-colors duration-300">
+  <app-root class="flex-1"></app-root>
 </body>
 </html>
