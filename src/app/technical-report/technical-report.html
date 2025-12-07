@@ -13,15 +13,15 @@
 
                     @for (c of item.content; track $index) {
 
-                    @if (c.type === 'text') {
-                        <p class="text-gray-300 leading-relaxed">
-                        {{ c.value }}
-                        </p>
-                    }
+                        @if (c.type === 'text') {
+                            <p class="text-gray-300 leading-relaxed">
+                            {{ c.value }}
+                            </p>
+                        }
 
-                    @if (c.type === 'image') {
-                        <img src="{{ c.value }}" class="rounded-lg shadow-lg" />
-                    }
+                        @if (c.type === 'image') {
+                            <img src="{{ c.value }}" class="rounded-lg shadow-lg" />
+                        }
 
                     }
 
