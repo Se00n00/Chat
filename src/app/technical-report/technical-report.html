@@ -1,1 +1,96 @@
-<p>technical-report works!</p>
+<div class="w-full flex justify-center">
+    <div class="w-11/12 max-w-6xl grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 p-6">
+
+        @for (section of data.sections; track $index) {
+
+            <!-- LEFT SIDE CONTENT -->
+            <div class="space-y-10">
+
+            @if (section.style === 'linear') {
+                @for (item of section.items; track $index) {
+                <div class="border-l-4 border-blue-500 pl-4 space-y-3">
+                    <h3 class="text-xl font-semibold"></h3>
+
+                    @for (c of item.content; track $index) {
+
+                    @if (c.type === 'text') {
+                        <p class="text-gray-300 leading-relaxed">
+                        {{ c.value }}
+                        </p>
+                    }
+
+                    @if (c.type === 'image') {
+                        <img src="{{ c.value }}" class="rounded-lg shadow-lg" />
+                    }
+
+                    }
+
+                </div>
+                }
+            }
+
+            @if (section.style === 'horizontal') {
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                @for (item of section.items; track $index) {
+                    <div class="rounded-xl border border-gray-700 bg-gray-900 p-4 shadow space-y-3">
+
+                    <h3 class="text-xl font-semibold"></h3>
+
+                    @for (c of item.content; track $index) {
+
+                        @if (c.type === 'text') {
+                        <p class="text-gray-300 leading-relaxed">{{ c.value }}</p>
+                        }
+
+                        @if (c.type === 'image') {
+                        <img src="{{ c.value }}" class="rounded-lg shadow-lg" />
+                        }
+
+                    }
+
+                    </div>
+                }
+
+                </div>
+            }
+
+            @if (section.style === 'cards') {
+                <div class="flex flex-wrap gap-4">
+
+                @for (item of section.items; track $index) {
+                    <div class="bg-gray-900 text-gray-200 p-4 rounded-xl border border-gray-700 w-full md:w-auto max-w-sm shadow space-y-2">
+
+                    <h3 class="text-lg font-semibold"></h3>
+
+                    @for (c of item.content; track $index) {
+                        <p class="leading-relaxed">{{ c.value }}</p>
+                    }
+
+                    </div>
+                }
+
+                </div>
+            }
+
+            </div>
+
+
+            <!-- RIGHT SIDE SECTION METADATA -->
+            <aside class="bg-gray-900 rounded-2xl border border-gray-700 p-6 h-fit sticky top-6">
+
+            <div class="text-xl font-bold mb-3">
+                {{ section.title }}
+            </div>
+
+            <span class="px-4 py-2 text-sm bg-gray-800 text-gray-300 rounded-full border border-gray-600">
+                Type: {{ section.type }}
+            </span>
+
+            </aside>
+
+        }
+        </div>
+
+</div>
+

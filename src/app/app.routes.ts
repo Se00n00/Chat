@@ -6,6 +6,6 @@ import { TechnicalReport } from './technical-report/technical-report';
 export const routes: Routes = [
     {path: '', redirectTo:'/chat', pathMatch: 'full'},
     {path:'chat', title:'Hydra /chat', component:Chat},
-    {path:'technical_report', title:'Hydra /technical_report', loadComponent: () => import('./technical-report/technical-report').then(m => m.TechnicalReport)},
+    {path:'technical_report', title:'Hydra /technical_report', component:TechnicalReport },
     {path:'**', title:'error', component:Error}
 ];

@@ -5,7 +5,7 @@
 
 
 @if (Conversation().length > 1) {
-  <div class="flex flex-col gap-5 w-10/12 md:w-10/12 mx-auto h-full min-h-screen max-w-4xl">
+  <div class="flex flex-col gap-5 w-10/12 md:w-10/12 mx-auto h-full max-w-4xl">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {
@@ -34,7 +34,7 @@
     </div>
   </div>
 }@else {
-  <div class="flex flex-col items-center gap-5 min-h-screen">
+  <div class="flex flex-col items-center gap-5 h-full">
     @for (item of Conversation(); track $index) {
       @switch (item.type) {
         @case ("USER") {

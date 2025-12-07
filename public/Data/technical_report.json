@@ -1,0 +1,89 @@
+{
+  "sections": [
+    {
+      "title": "System Architecture Overview",
+      "type": "technical-report",
+      "style": "linear",
+      "items": [
+        {
+          "heading": "Introduction",
+          "content": [
+            {
+              "type": "text",
+              "value": "This section provides an overview of the core system architecture, outlining its major subsystems, service communication models, and the deployment strategy used to ensure scalability and reliability."
+            }
+          ]
+        },
+        {
+          "heading": "High-Level Architecture",
+          "content": [
+            {
+              "type": "text",
+              "value": "The system follows a microservices-based architecture. Each module is independently deployable and communicates via REST and gRPC channels. The architecture ensures that components remain loosely coupled yet highly cohesive."
+            },
+            {
+              "type": "image",
+              "value": "assets/images/architecture_diagram.png"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Model Training & Performance Analysis",
+      "type": "technical-report",
+      "style": "horizontal",
+      "items": [
+        {
+          "heading": "Dataset Summary",
+          "content": [
+            {
+              "type": "text",
+              "value": "The training dataset consists of 1.2M DNA sequences, each annotated with cellular expression levels. The dataset highlights gene–protein interactions crucial for biomarker prediction."
+            }
+          ]
+        },
+        {
+          "heading": "Training Pipeline",
+          "content": [
+            {
+              "type": "text",
+              "value": "A custom Perceiver-based architecture was implemented. The model was trained on TPUs for 60 epochs using mixed-precision training. Key optimizations included aggressive gradient checkpointing and batched sequence encoding."
+            },
+            {
+              "type": "image",
+              "value": "assets/images/training_pipeline.png"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Results, Conclusions & Future Work",
+      "type": "technical-report",
+      "style": "cards",
+      "items": [
+        {
+          "heading": "Findings",
+          "content": [
+            {
+              "type": "text",
+              "value": "The model achieved significant improvements over baseline methods. Results show robust generalization across multiple protein-level prediction benchmarks."
+            }
+          ]
+        },
+        {
+          "heading": "Future Improvements",
+          "content": [
+            {
+              "type": "text",
+              "value": "Plans include scaling the model depth, integrating transformers-based locality attention, and deploying the model into a stream-optimized data pipeline."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

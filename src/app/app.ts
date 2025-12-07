@@ -12,12 +12,17 @@ import { TechnicalReport } from './technical-report/technical-report';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, FormsModule, MarkdownComponent, Chat, Error, TechnicalReport, RouterLink, RouterOutlet, RouterLinkActive],
+  imports: [
+    CommonModule,
+    Chat,
+    Error,
+    TechnicalReport, 
+    RouterLink, 
+    RouterOutlet, 
+    RouterLinkActive
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-
-  
-  
 }
