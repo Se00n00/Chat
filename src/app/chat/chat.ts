@@ -14,63 +14,63 @@ import { MarkdownComponent} from 'ngx-markdown';
   styleUrl: './chat.css'
 })
 export class Chat {
-  id: string = "chatcmpl-f0604589-69cf-455e-ad18-c91a04648208";
-  model: string = "openai/gpt-oss-120b";
-  created: number = 1765135214;
-  object: string = "chat.completion";
+  id: string = "";
+  model: string = "";
+  created: number = 0;
+  object: string = "";
 
-  prompt_tokens: number = 1668;
-  prompt_tokens_details: number = 1536;
-  completion_tokens: number = 481;
-  reasoning_tokens: number = 313;
+  prompt_tokens: number = 0;
+  prompt_tokens_details: number = 0;
+  completion_tokens: number = 0;
+  reasoning_tokens: number = 0;
 
-  prompt_time: number = 0.012096476;
-  queue_time: number = 0.049478594;
-  completion_time: number = 1.041399609;
+  prompt_time: number = 0.0;
+  queue_time: number = 0.0;
+  completion_time: number = 0.0;
 
-  total_tokens: number = 2149;
-  total_time: number = 1.053496085;
+  total_tokens: number = 0;
+  total_time: number = 0.0;
 
-  system_fingerprint: string = "fp_fd1fe7f861";
-  service_tier: string = "on_demand";
-  x_groq: string = "req_01kbx43rjvfkxrks017yvsmghg";
+  system_fingerprint: string = "";
+  service_tier: string = "";
+  x_groq: string = ""
 
-  reasoning: string = `The system wants us to output an Action JSON with name and arguments. The user gave a managed_agent with a task: basically says "Hiii"... (full reasoning text goes here)`;
+  reasoning: string = ""
 
 
   Conversation:WritableSignal<any[]> = signal([
     {"type":"SYSTEM","content":"Welcome to Chat Application, Ask any question using the input box"},
-    {
-      "type": "ASSISTANT",
-      "content": {
-        "metadata": {
-          "id": "chatcmpl-f0604589-69cf-455e-ad18-c91a04648208",
-          "model": "openai/gpt-oss-120b",
-          "created": 1765135214,
-          "object": "chat.completion",
-          "prompt_tokens": 1668,
-          "prompt_tokens_details": 1536,
-          "completion_tokens": 481,
-          "reasoning_tokens": 313,
-          "prompt_time": 0.012096476,
-          "queue_time": 0.049478594,
-          "completion_time": 1.041399609,
-          "total_tokens": 2149,
-          "total_time": 1.053496085,
-          "system_fingerprint": "fp_fd1fe7f861",
-          "service_tier": "on_demand",
-          "x_groq": "req_01kbx43rjvfkxrks017yvsmghg",
-          "resoning": "The system wants us to output an Action JSON with name and arguments. The user gave a managed_agent with a task: basically says \"Hiii\"... (ENTIRE reasoning text you provided)"
-        },
-        "response": {
-          "name": "final_answer",
-          "arguments": {
-            "answer": "### 1. Task outcome (short version):\nHello! How can I assist you today?\n\n### 2. Task outcome (extremely detailed version):\nThe user sent a friendly greeting \"Hiii\", which is an informal way of saying hello. This indicates they are open to interaction and likely expect a courteous response. I acknowledge the greeting, express willingness to help, and invite the user to specify any question, request, or topic they would like assistance with.\n\n### 3. Additional context (if relevant):\nNo further context was provided. Please let me know what you need help with, and I will be glad to assist."
-          }
-        }
-      }
-    },
-    {"type":"ERROR","content":"er"}
+    // {
+    //   "type": "ASSISTANT",
+    //   "content": {
+    //     "metadata": {
+    //       "id": "chatcmpl-f0604589-69cf-455e-ad18-c91a04648208",
+    //       "model": "openai/gpt-oss-120b",
+    //       "created": 1765135214,
+    //       "object": "chat.completion",
+    //       "prompt_tokens": 1668,
+    //       "prompt_tokens_details": 1536,
+    //       "completion_tokens": 481,
+    //       "reasoning_tokens": 313,
+    //       "prompt_time": 0.012096476,
+    //       "queue_time": 0.049478594,
+    //       "completion_time": 1.041399609,
+    //       "total_tokens": 2149,
+    //       "total_time": 1.053496085,
+    //       "system_fingerprint": "fp_fd1fe7f861",
+    //       "service_tier": "on_demand",
+    //       "x_groq": "req_01kbx43rjvfkxrks017yvsmghg",
+    //       "resoning": "The system wants us to output an Action JSON with name and arguments. The user gave a managed_agent with a task: basically says \"Hiii\"... (ENTIRE reasoning text you provided)"
+    //     },
+    //     "response": {
+    //       "name": "final_answer",
+    //       "arguments": {
+    //         "answer": "### 1. Task outcome (short version):\nHello! How can I assist you today?\n\n### 2. Task outcome (extremely detailed version):\nThe user sent a friendly greeting \"Hiii\", which is an informal way of saying hello. This indicates they are open to interaction and likely expect a courteous response. I acknowledge the greeting, express willingness to help, and invite the user to specify any question, request, or topic they would like assistance with.\n\n### 3. Additional context (if relevant):\nNo further context was provided. Please let me know what you need help with, and I will be glad to assist."
+    //       }
+    //     }
+    //   }
+    // },
+    // {"type":"ERROR","content":"er"}
   ])
 
   text: WritableSignal<string> = signal('');
@@ -132,10 +132,10 @@ export class Chat {
     if (!reader) return;
 
     try {
-      this.Conversation.update(prev => [
-        ...prev,
-        {type:"ASSISTANT", heading:"", content:""}
-      ]);
+      // this.Conversation.update(prev => [
+      //   ...prev,
+      //   {type:"ASSISTANT", heading:"", content:""}
+      // ]);
 
       while (true) {
         const { done, value } = await reader.read();
@@ -155,9 +155,25 @@ export class Chat {
 
         if (data.type === "ASSISTANT") {
 
-          const answer = data.content
+          let content = data.content;
 
-          const heading = data.content?.metadata?.heading ?? data.heading ?? "";
+          if (typeof content === "string" && content.startsWith("{")) {
+              try {
+                  const inner = JSON.parse(content);
+
+                  // If it's a final_answer tool call
+                  if (inner.response?.arguments?.answer) {
+                      content = inner.response.arguments.answer;
+                  } else {
+                      content = JSON.stringify(inner, null, 2);
+                  }
+              } catch (e) {
+                  // leave as raw string
+              }
+          }
+
+
+          // const heading = data.content?.metadata?.heading ?? data.heading ?? "";
 
           this.Conversation.update(prev => {
             const updated = [...prev];
@@ -166,16 +182,42 @@ export class Chat {
             if (updated[lastIndex]?.type === "ASSISTANT") {
               updated[lastIndex] = {
                 ...updated[lastIndex],
-                heading,
-                content: (updated[lastIndex].content || "") + answer
+                content: updated[lastIndex].content || (typeof content === "object" ? JSON.stringify(content) : content)
               };
             } else {
               updated.push({
                 type: "ASSISTANT",
-                heading,
-                content: answer
+                heading: "",
+                content: content
               });
             }
+
+            const meta = content.metadata;
+            const reasoning = meta.resoning ?? "";
+
+            this.id = meta.id;
+            this.model = meta.model;
+            this.created = meta.created;
+            this.object = meta.object;
+
+            this.prompt_tokens = meta.prompt_tokens;
+            this.prompt_tokens_details = meta.prompt_tokens_details;
+            this.completion_tokens = meta.completion_tokens;
+            this.reasoning_tokens = meta.reasoning_tokens;
+
+            this.prompt_time = meta.prompt_time;
+            this.queue_time = meta.queue_time;
+            this.completion_time = meta.completion_time;
+
+            this.total_tokens = meta.total_tokens;
+            this.total_time = meta.total_time;
+
+            this.system_fingerprint = meta.system_fingerprint;
+            this.service_tier = meta.service_tier;
+            this.x_groq = meta.x_groq;
+
+            this.reasoning = reasoning;
+            console.log(updated)
 
             return updated;
           });
@@ -190,6 +232,12 @@ export class Chat {
             { type: "ERROR", heading: "", content: data.content ?? "" }
           ]);
         }
+        else if (data.type === "FINAL_ANSWER") {
+          this.Conversation.update(prev => [
+            ...prev,
+            { type: "FINAL_ANSWER", heading: "", content: data.content ?? "" }
+          ]);
+        }
       }
     } catch (err) {
       this.Conversation.update(prev => [
@@ -199,4 +247,40 @@ export class Chat {
     }
 
   }
+
+  update_meta(content: any) {
+    if (!content || typeof content !== "object") return;
+
+    const meta = content.metadata;
+    if (!meta) return;
+
+    // basic metadata
+    this.id = meta.id ?? this.id;
+    this.model = meta.model ?? this.model;
+    this.created = meta.created ?? this.created;
+    this.object = meta.object ?? this.object;
+
+    // token counts
+    this.prompt_tokens = meta.prompt_tokens ?? this.prompt_tokens;
+    this.prompt_tokens_details = meta.prompt_tokens_details ?? this.prompt_tokens_details;
+    this.completion_tokens = meta.completion_tokens ?? this.completion_tokens;
+    this.reasoning_tokens = meta.reasoning_tokens ?? this.reasoning_tokens;
+
+    // timings
+    this.prompt_time = meta.prompt_time ?? this.prompt_time;
+    this.queue_time = meta.queue_time ?? this.queue_time;
+    this.completion_time = meta.completion_time ?? this.completion_time;
+
+    this.total_tokens = meta.total_tokens ?? this.total_tokens;
+    this.total_time = meta.total_time ?? this.total_time;
+
+    // system info
+    this.system_fingerprint = meta.system_fingerprint ?? this.system_fingerprint;
+    this.service_tier = meta.service_tier ?? this.service_tier;
+    this.x_groq = meta.x_groq ?? this.x_groq;
+
+    // IMPORTANT: Key is "resoning" not "reasoning"
+    this.reasoning = meta.resoning ?? this.reasoning;
+  }
+
 }
