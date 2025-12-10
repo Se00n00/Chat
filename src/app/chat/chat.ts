@@ -40,38 +40,41 @@ export class Chat {
 
   Conversation:WritableSignal<any[]> = signal([
     {"type":"SYSTEM","content":"Welcome to Chat Application, Ask any question using the input box"},
-    // {
-    //   "type": "ASSISTANT",
-    //   "content": {
-    //     "metadata": {
-    //       "id": "chatcmpl-f0604589-69cf-455e-ad18-c91a04648208",
-    //       "model": "openai/gpt-oss-120b",
-    //       "created": 1765135214,
-    //       "object": "chat.completion",
-    //       "prompt_tokens": 1668,
-    //       "prompt_tokens_details": 1536,
-    //       "completion_tokens": 481,
-    //       "reasoning_tokens": 313,
-    //       "prompt_time": 0.012096476,
-    //       "queue_time": 0.049478594,
-    //       "completion_time": 1.041399609,
-    //       "total_tokens": 2149,
-    //       "total_time": 1.053496085,
-    //       "system_fingerprint": "fp_fd1fe7f861",
-    //       "service_tier": "on_demand",
-    //       "x_groq": "req_01kbx43rjvfkxrks017yvsmghg",
-    //       "resoning": "The system wants us to output an Action JSON with name and arguments. The user gave a managed_agent with a task: basically says \"Hiii\"... (ENTIRE reasoning text you provided)"
-    //     },
-    //     "response": {
-    //       "name": "final_answer",
-    //       "arguments": {
-    //         "answer": "### 1. Task outcome (short version):\nHello! How can I assist you today?\n\n### 2. Task outcome (extremely detailed version):\nThe user sent a friendly greeting \"Hiii\", which is an informal way of saying hello. This indicates they are open to interaction and likely expect a courteous response. I acknowledge the greeting, express willingness to help, and invite the user to specify any question, request, or topic they would like assistance with.\n\n### 3. Additional context (if relevant):\nNo further context was provided. Please let me know what you need help with, and I will be glad to assist."
-    //       }
-    //     }
-    //   }
-    // },
-    // {"type":"ERROR","content":"er"}
+    {
+      "type": "ASSISTANT",
+      "content": {
+        "metadata": {
+          "id": "chatcmpl-f0604589-69cf-455e-ad18-c91a04648208",
+          "model": "openai/gpt-oss-120b",
+          "created": 1765135214,
+          "object": "chat.completion",
+          "prompt_tokens": 1668,
+          "prompt_tokens_details": 1536,
+          "completion_tokens": 481,
+          "reasoning_tokens": 313,
+          "prompt_time": 0.012096476,
+          "queue_time": 0.049478594,
+          "completion_time": 1.041399609,
+          "total_tokens": 2149,
+          "total_time": 1.053496085,
+          "system_fingerprint": "fp_fd1fe7f861",
+          "service_tier": "on_demand",
+          "x_groq": "req_01kbx43rjvfkxrks017yvsmghg",
+          "resoning": "The system wants us to output an Action JSON with name and arguments. The user gave a managed_agent with a task: basically says \"Hiii\"... (ENTIRE reasoning text you provided)"
+        },
+        "response": {
+          "name": "final_answer",
+          "arguments": {
+            "answer": "### 1. Task outcome (short version):\nHello! How can I assist you today?\n\n### 2. Task outcome (extremely detailed version):\nThe user sent a friendly greeting \"Hiii\", which is an informal way of saying hello. This indicates they are open to interaction and likely expect a courteous response. I acknowledge the greeting, express willingness to help, and invite the user to specify any question, request, or topic they would like assistance with.\n\n### 3. Additional context (if relevant):\nNo further context was provided. Please let me know what you need help with, and I will be glad to assist."
+          }
+        }
+      }
+    },
+    {"type":"ERROR","content":"some error"}
   ])
+
+
+  
 
   text: WritableSignal<string> = signal('');
   isTouched = signal(false)

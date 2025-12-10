@@ -25,11 +25,14 @@ import { TechnicalReport } from './technical-report/technical-report';
   styleUrl: './app.css'
 })
 export class App {
-  // ============ THEME SWITCHING ============
+  totalSegments = 10;       
+  filledSegments = 7;       
+
+  segments = Array(this.totalSegments).fill(0);
+
   isDarkMode = signal(false);
 
   constructor() {
-    // Check if user has a saved theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       this.isDarkMode.set(true);
@@ -37,11 +40,9 @@ export class App {
   }
 
   toggleTheme() {
-    // Get current value, toggle it, and set new value
     const newThemeState = !this.isDarkMode();
     this.isDarkMode.set(newThemeState);
 
-    // Apply theme to document
     if (newThemeState) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -49,8 +50,5 @@ export class App {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-
-    console.log('Theme toggled to:', newThemeState ? 'dark' : 'light'); // Debug log
   }
-  // ============ END THEME SWITCHING ============
 }
