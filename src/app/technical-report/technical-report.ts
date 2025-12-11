@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import reportData from '../../../public/Data/technical_report.json';
+
 interface ContentBlock {
   type: 'text' | 'image';
   value?: string;
@@ -33,24 +35,13 @@ interface Section {
   styleUrl: './technical-report.css'
 })
 export class TechnicalReport implements OnInit {
-  data: { sections: Section[] } = { sections: [] };
+  data = reportData;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(this.data)
+  }
 
   ngOnInit(): void {
-    this.loadPortfolioData();
   }
 
-  loadPortfolioData(): void {
-    this.http.get<{ sections: Section[] }>('Data/technical_report.json')
-      .subscribe({
-        next: (res) => {
-          this.data = res;
-          console.log(this.data)
-        },
-        error: (err) => {
-          console.error("Error loading Data", err);
-        }
-      });
-  }
 }
