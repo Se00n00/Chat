@@ -23,6 +23,13 @@
                     class="p-1.5 px-2.5 text-xs cursor-pointer w-10/12 self-end rounded-md bg-blue-600/[0.1] dark:bg-black border border-blue-400/[0.8] dark:border-zinc-400 shadow-[3px_3px_0px_#155dfc60] active:shadow-[2px_2px_0px_#155dfc60] dark:shadow-[3px_3px_0px_#71717a] active:dark:shadow-[2px_2px_0px_#71717a] text-blue-700/[0.63] dark:text-white font-light transition-all select-none">
                   </markdown>
                 }
+                @case ("FINAL_ANSWER") {
+                  <markdown 
+                  (click)="update_meta(item.content)"
+                    [data]="item?.content?.response?.arguments?.answer" 
+                    class="p-1.5 px-2.5 text-xs cursor-pointer w-10/12 self-end rounded-md bg-blue-600/[0.1] dark:bg-black border border-blue-400/[0.8] dark:border-zinc-400 shadow-[3px_3px_0px_#155dfc60] active:shadow-[2px_2px_0px_#155dfc60] dark:shadow-[3px_3px_0px_#71717a] active:dark:shadow-[2px_2px_0px_#71717a] text-blue-700/[0.63] dark:text-white font-light transition-all select-none">
+                  </markdown>
+                }
 
                 @case ("SYSTEM") {
                   <div class="p-1.5 px-2.5 text-xs rounded-md bg-red-500/[0.1] dark:bg-zinc-950 border border-red-500/[0.8] dark:border-zinc-800 shadow-[3px_3px_0px_rgba(239,68,68,0.65),inset_-3px_-3px_0px_#ffffff90] dark:shadow-[3px_3px_0px_#27272a] text-red-500 dark:text-zinc-400 font-light transition-colors duration-300">

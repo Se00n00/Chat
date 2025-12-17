@@ -21,25 +21,17 @@ export class App {
 
   segments = Array(this.totalSegments).fill(0);
 
-  isDarkMode = signal(false);
+  isDarkMode = signal(true);
 
   constructor() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      this.isDarkMode.set(true);
-    }
+    this.enableDarkMode();
   }
 
-  toggleTheme() {
-    const newThemeState = !this.isDarkMode();
-    this.isDarkMode.set(newThemeState);
-
-    if (newThemeState) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+  private enableDarkMode() {
+    this.isDarkMode.set(true);
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
   }
+  toggleTheme(){}
+
 }

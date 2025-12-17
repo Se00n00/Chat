@@ -2,6 +2,7 @@ import { Component, signal, WritableSignal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MarkdownComponent} from 'ngx-markdown';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -75,6 +76,12 @@ export class Chat {
 
 
   
+  
+  constructor(private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.queryLLM(params['q'] ?? '')
+    });
+  }
 
   text: WritableSignal<string> = signal('');
   isTouched = signal(false)

@@ -1,3 +1,6 @@
+<div class="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_0)] dark:bg-[radial-gradient(#ffffff_1px,transparent_0)] bg-[size:3px_3px] -z-10"></div>
+<div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,white_20%)] dark:bg-[linear-gradient(to_bottom,transparent_0%,black_10%)] -z-10"></div>
+
 <!-- -------------------------------------------------------------------- -->
 <!-- ------------------------ CONTROL BOARD ----------------------------- -->
 <!-- -------------------------------------------------------------------- -->
@@ -16,14 +19,14 @@
             /chat
           </a>
 
-          <a
+          <!-- <a
             [routerLink]="['/technical_report']"
             routerLinkActive="active-link"
             [routerLinkActiveOptions]="{ exact: true }"
             class="hover:text-white transition-all"
           >
             /technical_report
-          </a>
+          </a> -->
 
         </div>
         <div class="text-white">
@@ -36,7 +39,7 @@
       
       <div class="flex flex-col justify-between h-full items-end">
         <div class="flex gap-2 items-center">
-          <button (click)="toggleTheme()" class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] hover:bg-white/[0.2] transition-all p-1.5 rounded-sm cursor-pointer" title="Toggle Theme">
+          <!-- <button (click)="toggleTheme()" class="backdrop-blur-md transition-all p-1.5 rounded-sm cursor-pointer" title="Toggle Theme">
             @if (isDarkMode()) {
               <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -46,10 +49,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
               </svg>
             }
-          </button>
+          </button> -->
 
-          <a href="https://github.com/Se00n00/Heirarchial-Deep-researcher-Agent" target="_blank" class="backdrop-blur-md border border-white/[0.4] bg-white/[0.1] hover:bg-white/[0.2] transition-all p-1 rounded-sm cursor-pointer">
-            <img src="Icons/github.svg" class="h-6">
+          <a href="https://github.com/Se00n00/Heirarchial-Deep-researcher-Agent" target="_blank" class="cursor-pointer">
+            <img src="Icons/github.svg" class="h-8">
           </a>
         </div>
 
@@ -58,7 +61,7 @@
             <div class="flex gap-[2px]">
               <ng-container *ngFor="let segment of segments; let i = index">
                 <div
-                  class="h-12 w-3.5 rounded-[1px]"
+                  class="h-12 w-3.5 rounded-[2px]"
                   [ngClass]="i < filledSegments ? 'bg-white' : 'bg-white/[0.1]'"
                 ></div>
               </ng-container>
