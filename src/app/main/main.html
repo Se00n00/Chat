@@ -7,13 +7,13 @@
                     type="text"
                     [ngModel]="text()"
                     (ngModelChange)="onUserNameChange($event)"
-                    placeholder="Ask to Hydra, You shall receive Answer"
+                    placeholder="Ask Hydra, You shall receive Answer"
                     class="w-full pr-12 text-sm bg-gray-500/[0.1] backdrop-blur-md px-3.5 py-2
-                           rounded-md border dark:border-white/[0.3]
-                           dark:text-white/[0.5]
+                           rounded-md border dark:border-black/[0.3]
+                           dark:text-black/[0.5]
                            focus:outline-none focus:border-gray-500
                            dark:focus:border-gray-400
-                           focus:text-gray-500 dark:focus:text-gray-200
+                           focus:text-black dark:focus:text-black
                            transition-colors duration-300"
                 />
 
@@ -29,11 +29,13 @@
                         duration-100
                         "
                 >
-                [<span class="font-semibold">Enter</span>]
+                <span class="mx-1 font-semibold">Enter</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <img src="pixel_dither.png" alt="" class="select-none grayscale">
+    <div class="h-[calc(100vh-400px)] select-none grayscale">
+        <!-- <div class="font-extrabold text-6xl max-w-3xl text-white">HIERARCHICAL AGENT FRAMEWORK TO ANSWER YOU</div> -->
+    </div>
 </div>
